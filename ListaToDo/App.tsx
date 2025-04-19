@@ -3,6 +3,7 @@ import { View, StyleSheet, Alert, Text, Modal, TextInput, Button } from 'react-n
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 import { Todo } from './components/types';
+import {getDBConnection, createTable, addTodoItem, getTodoItems, updateTodoItem, deleteTodoItem} from './components/Database';
 
 const App: React.FC = () => {
 
@@ -14,7 +15,10 @@ const App: React.FC = () => {
   const addTodo = (todoText: string) => {
 
     if (todoText.length > 0) {
-      setTodos([...todos, { id: Math.random().toString(), text: todoText }]);
+      setTodos([...todos, {
+        id: Math.random().toString(), text: todoText,
+        done: false
+      }]);
     } else {
       Alert.alert("Erro"
         , "Preencha uma tarefa"
