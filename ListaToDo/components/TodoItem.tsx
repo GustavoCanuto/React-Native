@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, Button, StyleSheet, Switch } from 'react-native';
 import { Todo } from './types';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 type TodoItemProps = {
   todo: Todo;
@@ -13,19 +14,29 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, onRemoveTodo, onEdit }) => {
   const handleSwitch = (newValue: boolean) => {
     setCompleted(newValue);
     todo.done = newValue;
+    //console.log("teste") usar  npx react-native log-android para visualizar
   }
   return (
     <View style={styles.container}>
             <Text style={[styles.text, completed && styles.completedText]}>
         {todo.text}
     </Text>
-      <Switch
+
+    <BouncyCheckbox
+        fillColor="#4CAF50"
+        iconStyle={styles.checkboxIcon}
+        innerIconStyle={styles.checkboxIcon}
+        style={[styles.checkbox]}
+        isChecked={completed}
+        onPress={handleSwitch}
+      />
+      {/* <Switch
         style={[styles.checkbox, completed && styles.checked]}
         value={completed}
         onValueChange={
           handleSwitch
         }
-      />
+      /> */}
 
       {/* <Text>{isChecked ? 'Feito': 'Pendente'}</Text> */}
 
@@ -57,12 +68,10 @@ const styles = StyleSheet.create({
   checkbox: {
     width: 20,
     height: 20,
-    borderWidth: 2,
-    borderColor: 'black',
     marginRight: 10,
   },
-  checked: {
-    backgroundColor: 'white',
+  checkboxIcon: {
+    borderRadius: 4,
   },
 });
 

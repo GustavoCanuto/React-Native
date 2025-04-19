@@ -3,7 +3,7 @@ import { View, StyleSheet, Alert, Text, Modal, TextInput, Button } from 'react-n
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 import { Todo } from './components/types';
-import {getDBConnection, createTable, addTodoItem, getTodoItems, updateTodoItem, deleteTodoItem} from './components/Database';
+//import {getDBConnection, createTable, addTodoItem, getTodoItems, updateTodoItem, deleteTodoItem} from './components/Database';
 
 const App: React.FC = () => {
 
@@ -37,6 +37,7 @@ const App: React.FC = () => {
     seteditedText(todo.text);
     setEditModalVisible(true);
   };
+  
 
   const salvarEdited = () => {
     setTodos([...todos.map(i => {

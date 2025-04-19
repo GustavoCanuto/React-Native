@@ -12,6 +12,8 @@
   "dependencies": {
     "react": "19.0.0",
     "react-native": "0.78.1",
+    "react-native-bouncy-checkbox": "^4.1.2",
+    "react-native-checkbox": "^2.0.0",
     "react-native-sqlite-storage": "^6.0.1"
   },
   "devDependencies": {
