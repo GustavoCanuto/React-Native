@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, Button, StyleSheet, Switch } from 'react-native';
+import { View, Text, Button, StyleSheet} from 'react-native';
 import { Todo } from './types';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
@@ -7,13 +7,14 @@ type TodoItemProps = {
   todo: Todo;
   onRemoveTodo: (id: string) => void;
   onEdit: (todo: Todo) => void;
+  onToggleDone: (todo: Todo) => void;
 };
 
-const TodoItem: React.FC<TodoItemProps> = ({ todo, onRemoveTodo, onEdit }) => {
-  const [completed, setCompleted] = useState(false);
+export const TodoItem: React.FC<TodoItemProps> = ({ todo, onRemoveTodo, onEdit, onToggleDone }) => {
+  const [completed, setCompleted] = useState(todo.done);
   const handleSwitch = (newValue: boolean) => {
     setCompleted(newValue);
-    todo.done = newValue;
+    onToggleDone({ ...todo, done: newValue });
     //console.log("teste") usar  npx react-native log-android para visualizar
   }
   return (
@@ -75,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TodoItem;
+
